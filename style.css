@@ -1,0 +1,111 @@
+*, ::after, ::before{
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    height: 100vh;
+    background: radial-gradient(red 25%, blueviolet 100%);
+    display: grid;
+    place-items: center;
+}
+.wrapper{
+    background-color: #fff;
+    width: 50%;
+    max-width: 550px;
+    padding: 15px;
+    border-radius: 12px;
+}
+.wrapper h2{
+    margin: 0 0 15px;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.list .item{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.item.show{
+    border: 1px solid blueviolet;
+}
+.item header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+}
+header .circle_language{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.circle_language .circle{
+    width: 16px;
+    height: 16px;
+    border: 1px solid #777;
+    border-radius: 50%;
+    position: relative;
+}
+.circle_language .circle::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.item.show .circle::after{
+    background-color: blueviolet;
+}
+.item:hover .circle::after{
+    opacity: 1;
+}
+.percent{
+    display: none;
+}
+.item.active .percent{
+    display: block;
+}
+.progress_bar{
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: #eee;
+    border-radius: 12px;
+    display: none;
+    pointer-events: none;
+}
+.item.active .progress_bar{
+    display: block;
+}
+.bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background-color: #ccc;
+    border-radius: inherit;
+}
+.item.show .bar{
+    background-color: blueviolet;
+}
